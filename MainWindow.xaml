@@ -40,45 +40,45 @@
 
 
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="20,20,20,10" >
-            <Label Target="{Binding ElementName=passwordLength}">Password Length:</Label>
-            <ComboBox x:Name="passwordLength" HorizontalAlignment="Stretch" Width="Auto" Margin="0,0,0,0" SelectionChanged="passwordLength_SelectionChanged"/>
-            <CheckBox x:Name="lowercase" >
+            <Label Target="{Binding ElementName=passwordLength}">_Password Length:</Label>
+            <ComboBox x:Name="passwordLength" HorizontalAlignment="Stretch" Width="Auto" Margin="0,0,0,0" SelectionChanged="passwordLength_SelectionChanged" IsTextSearchEnabled="True" StaysOpenOnEdit="True"/>
+            <CheckBox x:Name="lowercase" IsChecked="True" >
                 <Label>
-                    Include lowercase characters (abcde...)
+                    Include _Lowercase Characters (abcde...)
                 </Label>
             </CheckBox>
-            <CheckBox x:Name="uppercase" >
+            <CheckBox x:Name="uppercase" IsChecked="True" >
                 <Label>
-                    Include uppercase characters (ABCDE...)
+                    Include _Uppercase Characters (ABCDE...)
                 </Label>
             </CheckBox>
-            <CheckBox x:Name="numbers" >
+            <CheckBox x:Name="numbers" IsChecked="True" >
                 <Label>
-                    Include numbers (12345...)
+                    Include _Numbers (12345...)
                 </Label>
             </CheckBox>
-            <CheckBox x:Name="symbols" >
+            <CheckBox x:Name="symbols" IsChecked="True" >
                 <Label>
-                    Include symbols (@#$%...)
+                    Include _Symbols (@#$%...)
                 </Label>
             </CheckBox>
             <CheckBox x:Name="similar" IsChecked="True">
                 <Label>
-                    Exclude similar characters (i l 1 L o 0 O)
+                    Exclude _Alike Characters (i l 1 L o 0 O)
                 </Label>
             </CheckBox>
-            <CheckBox x:Name="repeatings" IsChecked="True">
+            <CheckBox x:Name="repeatings" IsChecked="False">
                 <Label>
-                    Use repeating characters
+                    Use _Repeating Characters
                 </Label> 
             </CheckBox>
 
         </StackPanel>
 
-        <Button x:Name="button_Generate" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,10,20,10" Click="button_Generate_Click">Generate</Button>
+        <Button x:Name="button_Generate" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,10,20,10" Click="button_Generate_Click" IsDefault="True">_Generate</Button>
 
         <TextBox x:Name="outputTextBox" Grid.Row="2" Grid.Column="0" TextAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="16" TextWrapping="Wrap" Margin="20,10,10,20" Text="Password will appear here..." Height="Auto" Width="Auto" IsReadOnly="True"/>
-        <Button x:Name="copyButton" Grid.Row="2" Grid.Column="1" Margin="10,10,20,20" Click="copyButton_Click">Copy</Button>
+        <Button x:Name="copyButton" Grid.Row="2" Grid.Column="1" Margin="10,10,20,20" Click="copyButton_Click">_Copy</Button>
 
 
     </Grid>

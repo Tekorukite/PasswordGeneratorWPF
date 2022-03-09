@@ -42,8 +42,8 @@ namespace PasswordGeneratorWPF
 
         private void passwordLength_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            if (int.Parse((passwordLength.SelectedItem as ComboBoxItem).Content.ToString()) > 64) {
+            if ((int.TryParse((passwordLength.SelectedItem as ComboBoxItem).Content.ToString(), out int len))&&(len > 64)) 
+            {
                 repeatings.IsChecked = true;
                 repeatings.IsEnabled = false;
             }
@@ -51,8 +51,6 @@ namespace PasswordGeneratorWPF
             {
                 repeatings.IsEnabled = true;
             }
-                
-
         }
 
         private void button_Generate_Click(object sender, RoutedEventArgs e)
@@ -60,7 +58,8 @@ namespace PasswordGeneratorWPF
             string password = String.Empty;
             try
             {
-                PasswordGenerator PswdGen = new PasswordGenerator(int.Parse((passwordLength.SelectedItem as ComboBoxItem).Content.ToString()), lowercase.IsChecked ?? true, uppercase.IsChecked ?? true, numbers.IsChecked ?? true, symbols.IsChecked ?? true, repeatings.IsChecked ?? true, !(similar.IsChecked ?? true));
+                if (!int.TryParse((passwordLength.SelectedItem as ComboBoxItem).Content.ToString(), out int pswdlength)) throw new NullReferenceException();
+                PasswordGenerator PswdGen = new PasswordGenerator(pswdlength, lowercase.IsChecked ?? true, uppercase.IsChecked ?? true, numbers.IsChecked ?? true, symbols.IsChecked ?? true, repeatings.IsChecked ?? true, !(similar.IsChecked ?? true));
                 password = PswdGen.Generate();
             }
             catch (NullReferenceException)
